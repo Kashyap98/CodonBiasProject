@@ -6,3 +6,4 @@ testSeq = Seq("GTACCGTCA", generic_dna)
 
 print(testSeq)
 print(testSeq.alphabet)
+print("hello")
