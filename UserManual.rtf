@@ -5,6 +5,14 @@
 \margl1440\margr1440\vieww10800\viewh8400\viewkind0
 \pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
 
-\f0\fs24 \cf0 To concatenate all the fast file to one file\
+\f0\fs24 \cf0 To concatenate all the fasta files to one file\
 cat *.fasta > AllBlast.fasta\
+To create the Blast DB with the concatenated file
+makeblastdb -in AllBlast.fasta -title housekeeping -out housekeeping -dbtype nucl
+
+Directions for Scripts (WIP Based on Bugs, needs to be automated more or combined)
+Make a new folder for your genome.
+Run GeneSeperator.py and follow directions
+Place database files & LocalBlast.py in the newly created follow and follow directions
+Place CodonUsage.py & BiasGenerator.py in matched folder & follow directions.
 }

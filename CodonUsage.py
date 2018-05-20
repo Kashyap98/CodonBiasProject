@@ -9,7 +9,7 @@
 from __future__ import print_function
 
 import math
-from Bio.CodonUsageIndices import SharpEcoliIndex
+from Bio.SeqUtils.CodonUsageIndices import SharpEcoliIndex
 from Bio import SeqIO  # To parse a FASTA file
 
 
@@ -114,30 +114,29 @@ class CodonAdaptationIndex(object):
 
     def cai_for_gene(self, dna_sequence):
         """Calculate the CAI (float) for the provided DNA sequence (string).
-        This method uses the Index (either the one you set or the one you
-        generated) and returns the CAI for the DNA sequence.
+
+        This method uses the Index (either the one you set or the one you generated)
+        and returns the CAI for the DNA sequence.
         """
         cai_value, cai_length = 0, 0
 
-        # if no index is set or generated, the default SharpEcoliIndex will
-        # be used.
+        # if no index is set or generated, the default SharpEcoliIndex will be used.
         if self.index == {}:
             self.set_cai_index(SharpEcoliIndex)
 
-        if dna_sequence.islower():
+        if dna_sequence.lower():
             dna_sequence = dna_sequence.upper()
 
         for i in range(0, len(dna_sequence), 3):
             codon = dna_sequence[i:i + 3]
             if codon in self.index:
-                # these two codons are always one, exclude them:
-                if codon not in ['ATG', 'TGG']:
-                    cai_value += math.log(self.index[codon])
+                if codon not in ['ATG', 'TGG']:  # these two codons are always one, exclude them
+                    if self.index[
+                        codon] != 0.00:  # if the codon is 0 in the index an exception will be thrown so increment the length but do no increase the caiValue
+                        cai_value += math.log(self.index[codon])
                     cai_length += 1
-            # some indices may not include stop codons:
-            elif codon not in ['TGA', 'TAA', 'TAG']:
-                raise TypeError("illegal codon in sequence: %s.\n%s"
-                                % (codon, self.index))
+            elif codon not in ['TGA', 'TAA', 'TAG']:  # some indices may not include stop codons
+                raise TypeError("illegal codon in sequence: %s.\n%s" % (codon, self.index))
 
         return math.exp(cai_value / (cai_length - 1.0))
 
