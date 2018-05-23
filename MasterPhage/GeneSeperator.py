@@ -36,7 +36,14 @@ for genbankFiles in glob.glob(os.path.join(os.getcwd(), '*.gb')):
     for genes in SeqIO.parse(currentFile, "genbank"):
         for features in genes.features:
             if features.type == "CDS":
-                name = features.qualifiers['gene'][0]
+                #if features.qualifiers['gene'][0] is not None:
+                if ['gene'][0] in features.qualifiers:
+                    name = features.qualifiers['gene'][0]
+                elif ['locus_tag'][0] in features.qualifiers:
+                    name = features.qualifiers['locus_tag'][0]
+                else:
+                    name = "error"
+
                 seq = features.extract(genes.seq)
                 nameList.append(name)
                 seqList.append(seq)
