@@ -13,18 +13,20 @@ for file in glob.glob(os.path.join(os.getcwd(), '*.fasta')):
     blastn = NcbiblastnCommandline(query=name, db='housekeeping', outfmt='"10 bitscore"')
     result = list(blastn())
     bitscore = result[0]
-    print(name + " " + bitscore + " " + str(result))
     #Change bitscore into an int
     #if bitscore == '':
     #    bitscore = 0
     #else:
     #    bitscore = int(bitscore)
 
+    if "\n" in bitscore:
+        bitscore = bitscore.split('\n')[0]
+
     try:
         bitscore = int(bitscore)
     except ValueError:
-        if str(bitscore) is not '':
-            print("ERROR: " + name + " " + bitscore)
+        bitscore = 0
+        print("ERROR: " + name + " " + str(bitscore) + str(result))
     #Move the fasta file if bitscore > 50, currently does not move files but prints file name and score.
     try:
         if(bitscore > 50):
