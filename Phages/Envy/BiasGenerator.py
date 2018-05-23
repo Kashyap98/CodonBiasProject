@@ -43,7 +43,7 @@ SynonymousCodons = {
     'GLU': ['GAG', 'GAA'],
     'TYR': ['TAT', 'TAC']}
 
-outputFile = open(os.getcwd() + "\\output.txt", "w")
+outputFile = open(os.getcwd() + "output.txt", "w")
 codonCount = CodonsDict.copy()
 codonRatios = CodonsDict.copy()
 
