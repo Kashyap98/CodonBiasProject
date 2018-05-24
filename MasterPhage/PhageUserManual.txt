@@ -1,0 +1,32 @@
+*Steps to extract phage codon bias:*
+
+1. Copy all contents of MasterPhage (PhageBias, PhageGenes, Correlation) into the same folder as all genbank(full) 
+for desired phage genomes.
+
+2. In the command prompt. Type 'cd ' and go into the directory in which you have the phage genbank files and the 
+contents of MasterPhage. This can be done easily by clicking on the folder in the file explorer and copying the
+directory and pasting it after 'cd'.
+
+3. In the command prompt. Type 'cd [folder name]' (This enters the directory of the genes for the phage)
+
+4. In the command prompt. Type 'python PhageBias.py' (This runs the script to attain the codon bias of the phage)
+
+5. In the command prompt. Type 'cd ..' (This goes up a directory)
+
+6. Repeat steps 3-5 as necessary for each phage.
+
+7. [phage name]output.txt is the bias for each of the phages. These files are found in the correlation folder.
+This is done to make finding the correlation easier.
+
+_________________________________________________________________________________________________________________
+*Steps to attain correlation:*
+
+1. In the command prompt. Type 'cd ' and go into the directory in which you have the correlation files. This can be
+done easily by clicking on the folder in the file explorer and copying the directory and pasting it after 'cd'. 
+
+2. Ensure the correlation files for the phages and the bacteria are in the correlation folder.
+
+3. In the command prompt. type 'python Correlation.py [bacteria name]'
+
+4. The output file is Correlation.txt and will have the name of each phage and the first number after is correlation
+in decimal form. 

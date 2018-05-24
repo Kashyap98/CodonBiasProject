@@ -16,10 +16,10 @@ for x in bacteriaContent:
     number = row[1].strip()
     bacteriaDict[codon] = number
 
-#outputFile = open(os.getcwd() + "\\Correlation.txt", "w")
-
+correlationTotal = list()
 
 for phageFiles in glob.glob(os.path.join(os.getcwd(), '*.txt')):
+    fileName = os.path.basename(phageFiles)
 
     phageDict = {}
     bacteriaArray = []
@@ -40,5 +40,10 @@ for phageFiles in glob.glob(os.path.join(os.getcwd(), '*.txt')):
 
     correlation = corr.pearsonr(bacteriaArray, phageArray)
 
-    print(correlation)
+    correlationTotal.append(fileName + " " + str(correlation))
 
+outputFile = open(os.getcwd() + "\\Correlation.txt", "w")
+for position in range(len(correlationTotal)):
+    outputFile.write(str(correlationTotal[position]) + "\n")
+
+outputFile.close()
