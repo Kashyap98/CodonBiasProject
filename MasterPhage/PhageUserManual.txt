@@ -7,26 +7,31 @@ for desired phage genomes.
 contents of MasterPhage. This can be done easily by clicking on the folder in the file explorer and copying the
 directory and pasting it after 'cd'.
 
-3. In the command prompt. Type 'cd [folder name]' (This enters the directory of the genes for the phage)
+3. In the command prompt. Type 'python PhageGenes.py' (This runs the script to attain the codon bias of the phage)
 
-4. In the command prompt. Type 'python PhageBias.py' (This runs the script to attain the codon bias of the phage)
+4. In the command prompt. Type 'cd [folder name]' (This enters the directory of the genes for the phage)
 
-5. In the command prompt. Type 'cd ..' (This goes up a directory)
+5. In the command prompt. Type 'python PhageBias.py' (This runs the script to attain the codon bias of the phage)
 
-6. Repeat steps 3-5 as necessary for each phage.
+6. In the command prompt. Type 'cd ..' (This goes up a directory)
 
-7. [phage name]output.txt is the bias for each of the phages. These files are found in the correlation folder.
+7. Repeat steps 4-6 as necessary for each phage.
+
+8. [phage name]output.txt is the bias for each of the phages. These files are found in the correlation folder.
 This is done to make finding the correlation easier.
 
 _________________________________________________________________________________________________________________
 *Steps to attain correlation:*
 
-1. In the command prompt. Type 'cd ' and go into the directory in which you have the correlation files. This can be
+1. Find the bias file for the bacteria in which you want to find a correlation to for the phages. Place this file in 
+the same correlation folder as the desired phages.
+
+2. In the command prompt. Type 'cd ' and go into the directory in which you have the correlation files. This can be
 done easily by clicking on the folder in the file explorer and copying the directory and pasting it after 'cd'. 
 
-2. Ensure the correlation files for the phages and the bacteria are in the correlation folder.
+3. Ensure the correlation files for the phages and the bacteria are in the correlation folder.
 
-3. In the command prompt. type 'python Correlation.py [bacteria name]'
+4. In the command prompt. type 'python Correlation.py [bacteria name]'
 
-4. The output file is Correlation.txt and will have the name of each phage and the first number after is correlation
+5. The output file is Correlation.txt and will have the name of each phage and the first number after is correlation
 in decimal form. 
