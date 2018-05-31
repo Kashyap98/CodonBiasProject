@@ -30,7 +30,7 @@ for file in glob.glob(os.path.join(os.getcwd(), '*.fasta')):
     #Move the fasta file if bitscore > 50, currently does not move files but prints file name and score.
     try:
         if(bitscore > 50):
-            os.rename(os.getcwd() + "\\" + name, os.getcwd() + "\\matched\\" + name)
+            os.rename(os.getcwd() + "/" + name, os.getcwd() + "/matched/" + name)
             print(name)
             print(bitscore)
             totalCount += 1
