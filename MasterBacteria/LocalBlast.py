@@ -8,6 +8,7 @@ import sys
 #Make a new directory to move the matched genomes too
 totalCount = 0
 errorCount = 0
+outputFile = open(os.getcwd() + "\\BLASTOutput.txt", "w")
 for file in glob.glob(os.path.join(os.getcwd(), '*.fasta')):
     name = os.path.basename(file)
     blastn = NcbiblastnCommandline(query=name, db='housekeeping', outfmt='"10 bitscore"')
@@ -33,9 +34,12 @@ for file in glob.glob(os.path.join(os.getcwd(), '*.fasta')):
             os.rename(os.getcwd() + "\\" + name, os.getcwd() + "\\matched\\" + name)
             print(name)
             print(bitscore)
+            outputFile.write(name + " " + str(bitscore) + "\n")
             totalCount += 1
     except TypeError:
         errorCount += 1
 
 print(totalCount)
 print(errorCount)
+
+outputFile.close()
